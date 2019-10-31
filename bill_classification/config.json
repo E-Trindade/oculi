@@ -1,0 +1,34 @@
+{
+    "Records": [
+        {
+            "keywords": "nota 2 reais",
+            "limit": 25,
+            "print_urls": false
+        },
+        {
+            "keywords": "nota 5 reais",
+            "limit": 25,
+            "print_urls": false
+        },
+        {
+            "keywords": "nota 10 reais",
+            "limit": 25,
+            "print_urls": false
+        },
+        {
+            "keywords": "nota 20 reais",
+            "limit": 25,
+            "print_urls": false
+        },
+        {
+            "keywords": "nota 50 reais",
+            "limit": 25,
+            "print_urls": false
+        },
+        {
+            "keywords": "nota 1000 reais",
+            "limit": 25,
+            "print_urls": false
+        }
+    ]
+}
