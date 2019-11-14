@@ -11,6 +11,10 @@ import io
 
 import boto3
 
+import pyttsx3
+
+
+
 def process_image(image):
     image_rgb = image.convert('RGB')
     image_np = np.asarray(image).astype(np.uint8) 
@@ -29,6 +33,9 @@ def show_webcam(mirror=False):
     client = boto3.client('rekognition')
 
     predict = False
+
+    engine = pyttsx3.init(driverName='espeak')
+    engine.setProperty('voice', 'pt+m1')
 
     while True:
         ret_val, img = cam.read()
@@ -49,10 +56,18 @@ def show_webcam(mirror=False):
             from pprint import pprint
             # pprint()
             detections = response['TextDetections']
+            text = ""
             for t in detections:
+                text = t['DetectedText'] + " "
+                if t['Type'] != 'LINE':
+                    continue
+                if t['Confidence'] < 0.7:
+                    continue
+                engine.say(t['DetectedText'])
                 print(t['DetectedText'], end=" ")
                 print()
             predict = False
+            engine.runAndWait()
 
 
         cv2.imshow('my webcam', img)
